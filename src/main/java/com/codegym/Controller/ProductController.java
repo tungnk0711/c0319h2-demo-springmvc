@@ -15,6 +15,7 @@ import java.util.List;
 @Controller
 public class ProductController {
 
+    // depedency injection
     @Autowired
     private ProductServiceImpl productService;
 
