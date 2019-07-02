@@ -2,6 +2,7 @@ package com.codegym.Controller;
 
 import com.codegym.Model.Product;
 import com.codegym.Service.ProductServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +15,12 @@ import java.util.List;
 @Controller
 public class ProductController {
 
+    @Autowired
+    private ProductServiceImpl productService;
+
     @GetMapping(value = "show-products")
     public String showProducts(Model model) {
 
-        ProductServiceImpl productService = new ProductServiceImpl();
         List<Product> products = productService.findAll();
 
         model.addAttribute("products", products);

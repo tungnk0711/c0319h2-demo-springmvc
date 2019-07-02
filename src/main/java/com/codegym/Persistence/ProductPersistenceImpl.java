@@ -5,7 +5,7 @@ import com.codegym.Model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductPersistenceImpl implements GeneralPersistence{
+public class ProductPersistenceImpl implements GeneralPersistence<Product>{
 
 
     ArrayList<Product> listProduct = new ArrayList<>();

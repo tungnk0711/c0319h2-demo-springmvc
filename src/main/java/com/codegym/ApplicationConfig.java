@@ -1,5 +1,7 @@
 package com.codegym;
 
+import com.codegym.Persistence.ProductPersistenceImpl;
+import com.codegym.Service.ProductServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -16,7 +18,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.codegym.Controller")
+@ComponentScan("com.codegym")
 public class ApplicationConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
 
@@ -27,6 +29,8 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
+
+
 
 
 
@@ -56,5 +60,16 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
+
+    @Bean
+    public ProductPersistenceImpl getProductPersistenceImpl() {
+        return new ProductPersistenceImpl();
+    }
+
+    @Bean
+    public ProductServiceImpl getProductServiceImpl() {
+        return new ProductServiceImpl();
+    }
+
 
 }
