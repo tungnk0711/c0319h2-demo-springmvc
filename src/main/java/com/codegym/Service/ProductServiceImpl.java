@@ -16,4 +16,14 @@ public class ProductServiceImpl implements GeneralService<Product> {
     public List<Product> findAll() {
         return productPersistence.findAll();
     }
+
+    @Override
+    public void add(Product product) {
+        productPersistence.add(product);
+    }
+
+    @Override
+    public Product findById(Long id) {
+        return productPersistence.findById(id);
+    }
 }

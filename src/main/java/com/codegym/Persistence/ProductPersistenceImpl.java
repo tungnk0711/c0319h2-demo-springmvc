@@ -5,7 +5,7 @@ import com.codegym.Model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductPersistenceImpl implements GeneralPersistence<Product>{
+public class ProductPersistenceImpl implements GeneralPersistence<Product> {
 
 
     ArrayList<Product> listProduct = new ArrayList<>();
@@ -20,5 +20,24 @@ public class ProductPersistenceImpl implements GeneralPersistence<Product>{
     @Override
     public List<Product> findAll() {
         return listProduct;
+    }
+
+    @Override
+    public void add(Product product) {
+        listProduct.add(product);
+    }
+
+    @Override
+    public Product findById(Long id) {
+        int index = -1;
+        for (int i = 0; i < listProduct.size(); i++) {
+            if (listProduct.get(i).getId() == id) {
+                index = i;
+                break;
+            }
+        }
+
+        Product product = listProduct.get(index);
+        return product;
     }
 }

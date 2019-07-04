@@ -7,12 +7,19 @@
 </head>
 <body>
 <h1 class="title">Products List</h1>
+
+<form th:action="@{/product/search-product}" method="get">
+    <input type="text" th:name="name">
+    <input type="submit" th:value="Search">
+</form>
+
 <div>
     <div th:each="product,iterStat : ${products}" th:class="${iterStat.odd}? 'odd'">
         <div class="product-item">
             <p th:text="${product.id}"></p>
             <p th:text="${product.name}"></p>
             <p th:text="${product.price}"></p>
+            <p><a th:href="@{/product/product-detail/__${product.id}__}">detail</a></p>
         </div>
     </div>
 </div>
